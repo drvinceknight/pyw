@@ -85,9 +85,9 @@ Initial proposal:
   mid = (a + b) / 2
   while math.cos(mid) > 10 ** -2:
       if math.cos(a) * math.cos(mid) > 0:
-          a, mid = mid, (mib + b) / 2
+          a, mid = mid, (mid + b) / 2
       else:
-          b, mid = mid, (mib + a) / 2
+          b, mid = mid, (mid + a) / 2
   mid, math.cos(mid)
   ```
 
@@ -111,7 +111,7 @@ Initial proposal:
       """
       Checks if function(points) have the same sign
       """
-      return min(points) * max(points) > 0
+      return min(map(function, points)) * max(map(function, points)) > 0
 
   assert same_signed_value(math.cos, 2, 3) is True
   assert same_signed_value(math.cos, 0, math.pi) is False
